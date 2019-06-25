@@ -9,7 +9,7 @@
   "keywords": [],
   "author": "",
   "license": "MIT",
-  "devDependencies": {
+  "dependencies": {
     "@babel/core": "^7.4.5",
     "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.0.6",
