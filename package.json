@@ -1,6 +1,6 @@
 {
   "name": "x-componensts",
-  "private": true,
+  "private": false,
   "devDependencies": {
     "lerna": "^3.15.0"
   }

@@ -1,7 +1,6 @@
-import {Component, retrieve, store} from "../core";
+import {Component, retrieve, store} from "@x-components/core";
 import {Subscription} from "./models";
 import {addHistoryChangeListener} from "./history";
-import {instanceOf} from "prop-types";
 
 const pageLoadingKey = Symbol("pageLoading");
 const loadingPromiseKey = Symbol("pageLoadingPromise");

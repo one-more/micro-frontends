@@ -1,0 +1,21 @@
+{
+  "name": "@x-components/framework",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "peerDependencies": {
+    "@x-components/core": "github:one-more/@x-components/core",
+    "react": "^16.8.6",
+    "vue": "^2.6.10",
+    "react-dom": "^16.8.6"
+  },
+  "dependencies": {
+    "styled-components": "^4.3.1"
+  }
+}

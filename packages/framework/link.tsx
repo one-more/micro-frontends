@@ -1,10 +1,10 @@
-import * as React from "react"
-import {Component} from "~/core";
-import styled from "styled-components"
+import * as React from "react";
+import {Component} from "@x-components/core";
+import styled from "styled-components";
 import {SyntheticEvent} from "react";
 import {addHistoryChangeListener, pushState} from "./history";
-import {renderReact} from "~/framework/render-react";
-import {Subscription} from "~/framework/models";
+import {renderReact} from "./render-react";
+import {Subscription} from "./models";
 
 export class XLink extends Component {
     static getName(): string {
