@@ -21,7 +21,7 @@ export class XLink extends Component {
         root.innerHTML = '';
 
         const link = document.createElement("a");
-        link.className = "x-link";
+        link.className = "x-link " + (this.href == location.pathname ? "active" : "");
         link.href = this.href;
         link.textContent = this.text;
         link.addEventListener("click", this.onClick);
