@@ -1,5 +1,4 @@
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-const path = require('path');
 
 module.exports = {
     optimization: {
@@ -32,7 +31,6 @@ module.exports = {
     resolve: {
         extensions: [".ts", ".tsx", ".mjs", ".js", ".json", ".svelte", ".vue"],
         alias: {
-            '~': path.resolve(__dirname, 'src/'),
             'vue$': 'vue/dist/vue.runtime.esm.js',
         }
     },
