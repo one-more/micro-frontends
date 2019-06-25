@@ -1,6 +1,6 @@
 {
   "name": "@micro-frontends/framework",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "index.ts",
   "scripts": {
@@ -10,10 +10,10 @@
   "author": "",
   "license": "MIT",
   "peerDependencies": {
+    "@micro-frontends/core": "*",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "vue": "^2.6.10",
-    "@micro-frontends/core": "*"
+    "vue": "^2.6.10"
   },
   "dependencies": {
     "styled-components": "^4.3.1"
