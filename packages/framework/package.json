@@ -1,5 +1,5 @@
 {
-  "name": "@x-components/framework",
+  "name": "@micro-frontends/framework",
   "version": "1.0.1",
   "description": "",
   "main": "index.ts",
@@ -10,12 +10,13 @@
   "author": "",
   "license": "MIT",
   "peerDependencies": {
-    "@x-components/core": "github:one-more/@x-components/core",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "vue": "^2.6.10"
+    "vue": "^2.6.10",
+    "@micro-frontends/core": "*"
   },
   "dependencies": {
     "styled-components": "^4.3.1"
-  }
+  },
+  "gitHead": "91e799e2e76fa305e0050310d3076b657746d1bc"
 }

@@ -1,5 +1,5 @@
 import * as React from "react";
-import {Component} from "@x-components/core";
+import {Component} from "@micro-frontends/core";
 import styled from "styled-components";
 import {SyntheticEvent} from "react";
 import {addHistoryChangeListener, pushState} from "./history";

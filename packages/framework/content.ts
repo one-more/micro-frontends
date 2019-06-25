@@ -1,4 +1,4 @@
-import {Component, retrieve, store} from "@x-components/core";
+import {Component, retrieve, store} from "@micro-frontends/core";
 import {Subscription} from "./models";
 import {addHistoryChangeListener} from "./history";
 
