@@ -1,6 +1,6 @@
 {
   "name": "@x-components/framework",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.ts",
   "scripts": {
@@ -12,8 +12,8 @@
   "peerDependencies": {
     "@x-components/core": "github:one-more/@x-components/core",
     "react": "^16.8.6",
-    "vue": "^2.6.10",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "vue": "^2.6.10"
   },
   "dependencies": {
     "styled-components": "^4.3.1"
