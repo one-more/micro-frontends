@@ -18,6 +18,8 @@ export class XLink extends Component {
     subscription: Subscription;
 
     render(root: HTMLDivElement) {
+        root.innerHTML = '';
+
         const link = document.createElement("a");
         link.className = "x-link";
         link.href = this.href;
