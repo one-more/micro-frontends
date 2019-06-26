@@ -1,6 +1,28 @@
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const cwd = process.cwd();
+const glob = require('glob');
+const path = require("path");
+
+const entryArray = glob.sync(cwd + '/src/pages/**/*.ts').concat(
+    glob.sync(cwd + '/src/pages/**/*.js')
+);
+
+const entryObject = entryArray.reduce((acc, item) => {
+    let name;
+    if (path.basename(item).includes("index")) {
+        name = item.split(path.sep).slice(-2).shift()
+    } else {
+        name = path.basename(item).replace(/\.\w+$/, '')
+    }
+    acc[name] = item;
+    return acc;
+}, {
+    main: "./src/index.ts",
+});
 
 module.exports = {
+    entry: entryObject,
+
     optimization: {
         usedExports: true,
         runtimeChunk: {
