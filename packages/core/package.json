@@ -9,5 +9,13 @@
   "keywords": [],
   "author": "",
   "license": "MIT",
-  "gitHead": "7b28783844772b1ce9d4d8b07d3bfafe7bc7ea56"
+  "gitHead": "7b28783844772b1ce9d4d8b07d3bfafe7bc7ea56",
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "svelte": "^3.5.3",
+    "vue": "^2.6.10",
+    "imba": "^1.4.4",
+    "vue-template-compiler": "^2.6.10"
+  }
 }
