@@ -1,33 +1,56 @@
 #!/usr/bin/env node
-const exec = require('child_process').exec;
-const chokidar = require('chokidar');
+const cp = require('child_process');
 const process = require("process");
 const fs = require("fs");
+const terminate = require('terminate');
 
+const exec = cp.exec;
 const cwd = process.cwd();
 const pagesDirPath = cwd + "/src/pages";
 const pagesDirExists = fs.existsSync(pagesDirPath);
-let devServer = execute("./node_modules/.bin/webpack-dev-server --open");
+const isWin = process.platform.indexOf("win") == 0;
+const tty = String(
+    cp.execSync('tty', {stdio:['inherit', 'pipe', 'pipe']})
+);
+let devServer = execute(
+    "./node_modules/.bin/webpack-dev-server --open",
+);
+let busy = false;
+let lastChangedFile;
 
 if (pagesDirExists) {
-    const watcher = chokidar.watch(pagesDirPath);
-    watcher.on("add", onPagesEntryChange);
-    watcher.on("unlink", onPagesEntryChange);
+    fs.watch(pagesDirPath, onPagesEntryChange)
 }
 
-function onPagesEntryChange() {
-    devServer.kill();
-    devServer = execute("./node_modules/.bin/webpack-dev-server");
+function onPagesEntryChange(type, fileName) {
+    if (busy || fileName == lastChangedFile) {
+        return
+    }
+    busy = true;
+    if (fileName.indexOf(".js") != -1 || fileName.indexOf(".ts") != -1) {
+        lastChangedFile = fileName;
+        console.log(fileName + " changed. restarting dev server");
+        terminate(devServer.pid, () => {
+            busy = false;
+            devServer = execute(
+                "./node_modules/.bin/webpack-dev-server",
+            );
+        });
+    }
 }
 
 function execute(command) {
-    const proc = exec(command);
-    proc.stdout.on('data', function (data) {
-        console.log(data);
-    });
+    console.log(
+        command + (isWin ? "" : " > " + tty)
+    );
+    const proc = exec(
+        command + (isWin ? "" : " > " + tty)
+    );
 
-    proc.stderr.on('data', function (data) {
-        console.error(data.toString());
-    });
+    if (isWin) {
+        proc.stdout.pipe(process.stdout);
+        proc.stderr.pipe(process.stderr);
+    }
+
     return proc
 }
