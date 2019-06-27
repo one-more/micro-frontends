@@ -1,5 +1,5 @@
 {
-  "name": "scripts",
+  "name": "@micro-frontends/scripts",
   "version": "1.0.1",
   "description": "",
   "main": "index.js",
@@ -14,5 +14,6 @@
   "license": "MIT",
   "dependencies": {
     "terminate": "^2.1.2"
-  }
+  },
+  "gitHead": "c3d1527bea0ff5343d591f0fd8c5e16e740b8ae0"
 }
