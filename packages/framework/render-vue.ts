@@ -9,7 +9,7 @@ export function renderVue(
     container: Element,
 ) {
     return new Vue({
-        el:container,
+        el: container,
         render: (h) => h(component)
     })
 }

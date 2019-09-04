@@ -1,13 +1,17 @@
 {
   "name": "@micro-frontends/core",
   "version": "1.0.8",
-  "description": "",
-  "main": "index.ts",
+  "description": "core package of the micro-frontends scope",
+  "main": "dist/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack --config webpack.config.js && tsc --declaration --outDir dist/ --emitDeclarationOnly",
+    "prepublish": "build"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["micro-frontends"],
+  "author": "one-more",
+  "contributors": [
+    "master-7"
+  ],
   "license": "MIT",
   "gitHead": "7b28783844772b1ce9d4d8b07d3bfafe7bc7ea56",
   "dependencies": {
