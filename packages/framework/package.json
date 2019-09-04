@@ -2,12 +2,16 @@
   "name": "@micro-frontends/framework",
   "version": "1.0.6",
   "description": "",
-  "main": "index.ts",
+  "main": "dist/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack --config webpack.config.js && tsc --declaration --outDir dist/ --emitDeclarationOnly",
+    "prepublish": "build"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["micro-frontends"],
+  "author": "one-more",
+  "contributors": [
+    "master-7"
+  ],
   "license": "MIT",
   "peerDependencies": {
     "@micro-frontends/core": "*",
