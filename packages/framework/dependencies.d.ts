@@ -12,14 +12,6 @@ declare module '@micro-frontends/core' {
     function store<T>(key: StorageKey, value: T): void;
 }
 
-declare module react {
-    interface ReactElement {}
-}
-
-declare module 'react-dom' {
-    function render(element: react.ReactElement, container: Element): void;
-}
-
 declare module 'vue' {
     interface VueConstructor {}
     export default class Vue {
