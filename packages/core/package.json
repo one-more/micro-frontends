@@ -1,13 +1,15 @@
 {
   "name": "@micro-frontends/core",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "core package of the micro-frontends scope",
   "main": "dist/main.js",
   "scripts": {
     "build": "webpack --config webpack.config.js && tsc --declaration --outDir dist/ --emitDeclarationOnly",
     "prepublish": "build"
   },
-  "keywords": ["micro-frontends"],
+  "keywords": [
+    "micro-frontends"
+  ],
   "author": "one-more",
   "contributors": [
     "master-7"
