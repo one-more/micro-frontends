@@ -2,6 +2,10 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const cwd = process.cwd();
 const glob = require('glob');
 const path = require("path");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
+const WriteFilePlugin = require('write-file-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const entryArray = glob.sync(cwd + '/src/pages/**/*.ts').concat(
     glob.sync(cwd + '/src/pages/**/*.js')
@@ -22,6 +26,13 @@ const entryObject = entryArray.reduce((acc, item) => {
 
 module.exports = {
     entry: entryObject,
+
+    output: {
+        path: cwd + "/dist",
+        filename: '[name].bundle.js',
+        chunkFilename: '[name].bundle.js',
+        publicPath: '/',
+    },
 
     optimization: {
         usedExports: true,
@@ -48,13 +59,23 @@ module.exports = {
 
     plugins: [
         new VueLoaderPlugin(),
+        new CleanWebpackPlugin(),
+        new HtmlWebpackPlugin({
+            template: 'index.html',
+            inject: false,
+        }),
+        new CopyPlugin([
+            { from: 'src/pages/*.html', to: '.', flatten: true }
+        ]),
+        new WriteFilePlugin(),
     ],
 
     resolve: {
         extensions: [".ts", ".tsx", ".mjs", ".js", ".json", ".svelte", ".vue"],
         alias: {
             'vue$': 'vue/dist/vue.runtime.esm.js',
-        }
+            '~': path.resolve(cwd, 'src/'),
+        },
     },
 
     module: {
