@@ -6,7 +6,10 @@
   "npmClient": "npm",
   "command": {
     "publish": {
-      "ignoreChanges": ["ignored-file", "*.md"]
+      "ignoreChanges": ["ignored-file", "*.md"],
+      "npmClient": "npm",
+      "useWorkspaces": true,
+      "verifyAccess": false
     }
   }
 }
