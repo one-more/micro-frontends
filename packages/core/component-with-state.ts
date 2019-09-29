@@ -24,7 +24,7 @@ export class ComponentWithState extends Component {
     this.selector = selector
     this.state = props(selector, store)
     this.actions = actions
-    
+
     onStoreDataChangeCallback(this.onStoreDataChange)
   }
 
