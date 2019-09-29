@@ -1,8 +1,11 @@
-export class Component extends HTMLElement {
+import { AbstractComponent } from './abstract-component';
+
+export class Component extends AbstractComponent {
     static getName(): string {
         throw new Error("Custom component should overload static getName method")
     }
 
+    /** @fixme never used */
     static get observedAttributes(): string[] {
         return [];
     }
@@ -19,18 +22,6 @@ export class Component extends HTMLElement {
             this.appendChild(this.root);
         }
     }
-
-    beforeRender() {}
-
-    afterRender() {}
-
-    connected() {}
-
-    disconnected() {}
-
-    propChanged(name: string, oldValue: string, newValue: string) {}
-
-    render(root: ShadowRoot | HTMLDivElement) {}
 
     callRender(): void {
         this.beforeRender();
@@ -49,6 +40,7 @@ export class Component extends HTMLElement {
         this.disconnected()
     }
 
+    /** @fixme never used */
     attributeChangedCallback(name: string, oldValue: string, newValue: string) {
         if (typeof oldValue != "undefined" && typeof newValue != "undefined") {
             if (oldValue !== newValue) {
