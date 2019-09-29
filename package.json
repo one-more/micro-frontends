@@ -16,5 +16,8 @@
     "webpack": "^4.39.3",
     "webpack-cli": "^3.3.7",
     "webpack-merge": "^4.2.2"
+  },
+  "dependencies": {
+    "ramda": "^0.26.1"
   }
 }
