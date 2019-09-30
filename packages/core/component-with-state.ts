@@ -40,7 +40,6 @@ export class ComponentWithState extends Component {
     const stateNext = props(this.selector, storeNext)
 
     if (this.shouldComponentUpdate(this.state, stateNext)) {
-      /** @mark Should the deep clone to be here? */
       this.state = stateNext
       this.update()
     }
