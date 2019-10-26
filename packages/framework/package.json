@@ -1,10 +1,11 @@
 {
   "name": "@micro-frontends/framework",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "",
-  "main": "dist/main.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "webpack --config webpack.config.js && tsc --declaration --outDir dist/ --emitDeclarationOnly",
+    "build:dev": "webpack --config webpack.config.dev.js && tsc --declaration --outDir dist/ --emitDeclarationOnly",
     "prepublish": "npm run build"
   },
   "keywords": [
@@ -15,8 +16,8 @@
     "master-7"
   ],
   "license": "MIT",
-  "peerDependencies": {
-    "@micro-frontends/core": "*",
+  "devDependencies": {
+    "@micro-frontends/core": "1.0.12",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "vue": "^2.6.10"

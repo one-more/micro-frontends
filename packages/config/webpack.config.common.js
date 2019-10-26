@@ -82,17 +82,8 @@ module.exports = {
         rules: [
             {
                 test: /\.tsx?$/,
-                loader: "awesome-typescript-loader",
-                options: {
-                    "useBabel": true,
-                    "babelOptions": {
-                        "babelrc": true,
-                        "presets": [
-                            ["@babel/preset-env", { "targets": "last 2 versions, ie 11", "modules": false }]
-                        ]
-                    },
-                    "babelCore": "@babel/core",
-                }
+                exclude: /node_modules/,
+                loader: "babel-loader",
             },
 
             { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },

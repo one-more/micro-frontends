@@ -1,6 +1,6 @@
 {
   "name": "@micro-frontends/config",
-  "version": "1.0.13",
+  "version": "1.0.16",
   "description": "",
   "main": "",
   "scripts": {
@@ -10,12 +10,14 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@babel/core": "^7.4.5",
-    "@babel/plugin-proposal-class-properties": "^7.4.4",
-    "@babel/preset-env": "^7.4.5",
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-typescript": "^7.3.3",
+    "@babel/preset-react": "^7.0.0",
     "@types/react": "^16.8.20",
     "@types/react-dom": "^16.8.4",
-    "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.0.6",
     "compression-webpack-plugin": "^3.0.0",
     "css-loader": "^3.0.0",
@@ -24,7 +26,7 @@
     "source-map-loader": "^0.2.4",
     "style-loader": "^0.23.1",
     "svelte-loader": "^2.13.4",
-    "typescript": "^3.5.2",
+    "typescript": "^3.6.2",
     "vue-loader": "^15.7.0",
     "webpack": "^4.34.0",
     "webpack-bundle-analyzer": "^3.3.2",
@@ -34,7 +36,8 @@
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^5.0.4",
     "html-webpack-plugin": "^3.2.0",
-    "write-file-webpack-plugin": "^4.5.1"
+    "write-file-webpack-plugin": "^4.5.1",
+    "vue-template-compiler": "^2.6.10"
   },
   "gitHead": "f89475eeec35084a11b4cb1df9144e3aeca99af4"
 }

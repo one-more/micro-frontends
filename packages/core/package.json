@@ -1,10 +1,11 @@
 {
   "name": "@micro-frontends/core",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "core package of the micro-frontends scope",
-  "main": "dist/main.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "webpack --config webpack.config.js && tsc --declaration --outDir dist/ --emitDeclarationOnly",
+    "build:dev": "webpack --config webpack.config.dev.js && tsc --declaration --outDir dist/ --emitDeclarationOnly",
     "prepublish": "npm run build"
   },
   "keywords": [
@@ -21,7 +22,6 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "svelte": "^3.5.3",
-    "vue": "^2.6.10",
-    "vue-template-compiler": "^2.6.10"
+    "vue": "^2.6.10"
   }
 }

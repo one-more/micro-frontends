@@ -1,3 +1,12 @@
 {
-    "plugins": ["@babel/plugin-proposal-class-properties"]
+    "presets": [
+        ["@babel/env", { "targets": "last 2 versions, ie 11", "modules": false }],
+        "@babel/preset-typescript",
+        "@babel/preset-react"
+    ],
+    "plugins": [
+        "@babel/plugin-proposal-class-properties",
+        "@babel/proposal-class-properties",
+        "@babel/proposal-object-rest-spread"
+    ]
 }

@@ -6,5 +6,6 @@ module.exports = merge(config, {
     output: {
         path: __dirname + "/dist",
         filename: 'index.js',
+        libraryTarget: 'umd'
     },
 });

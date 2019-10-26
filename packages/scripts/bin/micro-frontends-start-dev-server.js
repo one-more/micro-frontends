@@ -49,8 +49,8 @@ function execute(command) {
 
     if (isWin) {
         proc.stdout.pipe(process.stdout);
-        proc.stderr.pipe(process.stderr);
     }
+    proc.stderr.pipe(process.stderr);
 
     return proc
 }
