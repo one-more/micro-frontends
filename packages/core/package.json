@@ -1,6 +1,6 @@
 {
   "name": "@micro-frontends/core",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "core package of the micro-frontends scope",
   "main": "dist/index.js",
   "scripts": {
