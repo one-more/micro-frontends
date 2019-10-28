@@ -1,16 +1,26 @@
-export class Component extends HTMLElement {
-    static getName(): string {
+import {ActionCreators, Actions, Selector, Store, Unsubscribe} from "./model";
+import {subscribeWithSelector} from "./data-layer";
+
+export class Component<State> extends HTMLElement {
+    public static getName(): string {
         throw new Error("Custom component should overload static getName method")
     }
 
-    static get observedAttributes(): string[] {
+    public static get observedAttributes(): string[] {
         return [];
     }
 
-    isShadow: boolean = false;
-    root: HTMLDivElement;
+    protected isShadow: boolean = false;
+    protected root: HTMLDivElement;
 
-    createRoot() {
+    protected store: Store<unknown> = null;
+    protected selector: Selector<unknown, State> = null;
+    protected unsubscribe: Unsubscribe = null;
+    protected state: State = null;
+    protected actionCreators: ActionCreators = null;
+    protected actions: Actions = null;
+
+    private createRoot() {
         if (this.isShadow) {
             this.attachShadow({mode: 'open'})
         } else {
@@ -20,19 +30,19 @@ export class Component extends HTMLElement {
         }
     }
 
-    beforeRender() {}
+    protected beforeRender() {}
 
-    afterRender() {}
+    protected afterRender() {}
 
-    connected() {}
+    protected connected() {}
 
-    disconnected() {}
+    protected disconnected() {}
 
-    propChanged(name: string, oldValue: string, newValue: string) {}
+    protected propChanged(name: string, oldValue: string, newValue: string) {}
 
-    render(root: ShadowRoot | HTMLDivElement) {}
+    protected render(root: ShadowRoot | HTMLDivElement) {}
 
-    callRender(): void {
+    private callRender(): void {
         this.beforeRender();
         this.render(this.isShadow ? this.shadowRoot : this.root);
         this.afterRender();
@@ -42,14 +52,41 @@ export class Component extends HTMLElement {
         this.createRoot();
         this.callRender();
 
+        if(this.store && this.selector) {
+            this.unsubscribe = subscribeWithSelector(
+                this.store,
+                this.selector,
+                this.update
+            );
+
+            if (this.actionCreators) {
+                this.bindActionCreators()
+            }
+        }
+
         this.connected()
     }
 
     disconnectedCallback() {
-        this.disconnected()
+        if (this.unsubscribe) {
+            this.unsubscribe()
+        }
+
+        this.disconnected();
     }
 
-    attributeChangedCallback(name: string, oldValue: string, newValue: string) {
+    private bindActionCreators() {
+        for (const key in this.actionCreators) {
+            if (this.actionCreators.hasOwnProperty(key)) {
+                const actionCreator = this.actionCreators[key];
+                this.actions[key] = (...args) => this.store.dispatch(
+                    actionCreator(...args)
+                )
+            }
+        }
+    }
+
+    protected attributeChangedCallback(name: string, oldValue: string, newValue: string) {
         if (typeof oldValue != "undefined" && typeof newValue != "undefined") {
             if (oldValue !== newValue) {
                 this.propChanged(name, oldValue, newValue)
@@ -57,7 +94,8 @@ export class Component extends HTMLElement {
         }
     }
 
-    update(): void {
+    protected update(state?: State): void {
+        this.state = state;
         this.callRender()
     }
 }
