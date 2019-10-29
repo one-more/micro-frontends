@@ -50,20 +50,24 @@ export class Component<State> extends HTMLElement {
 
     connectedCallback() {
         this.createRoot();
-        this.callRender();
 
-        if(this.store && this.selector) {
-            this.unsubscribe = subscribeWithSelector(
-                this.store,
-                this.selector,
-                this.update
-            );
+        if(this.store) {
+            if (this.selector) {
+                this.state = this.selector(this.store.getState());
+
+                this.unsubscribe = subscribeWithSelector(
+                    this.store,
+                    this.selector,
+                    this.update
+                );
+            }
 
             if (this.actionCreators) {
                 this.bindActionCreators()
             }
         }
 
+        this.callRender();
         this.connected()
     }
 
@@ -94,7 +98,7 @@ export class Component<State> extends HTMLElement {
         }
     }
 
-    protected update(state?: State): void {
+    protected update = (state?: State): void => {
         this.state = state;
         this.callRender()
     }
