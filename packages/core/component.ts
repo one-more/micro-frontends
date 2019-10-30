@@ -1,5 +1,5 @@
 import {ActionCreators, Actions, Selector, Store, Unsubscribe} from "./model";
-import {subscribeWithSelector} from "./data-layer";
+import {shallowEquals, subscribeWithSelector} from "./data-layer";
 
 export class Component<State> extends HTMLElement {
     public static getName(): string {
@@ -19,6 +19,7 @@ export class Component<State> extends HTMLElement {
     protected state: State = null;
     protected actionCreators: ActionCreators = null;
     protected actions: Actions = {};
+    protected statesAreEqual = shallowEquals;
 
     private createRoot() {
         if (this.isShadow) {
@@ -58,7 +59,8 @@ export class Component<State> extends HTMLElement {
                 this.unsubscribe = subscribeWithSelector(
                     this.store,
                     this.selector,
-                    this.update
+                    this.update,
+                    this.statesAreEqual,
                 );
             }
 
