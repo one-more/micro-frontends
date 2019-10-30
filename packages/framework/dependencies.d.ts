@@ -14,7 +14,7 @@ declare module '@micro-frontends/core' {
 
 declare module 'vue' {
     interface VueConstructor {}
-    export default class Vue {
+    export default class Vue<K> {
         static config: {
             productionTip: boolean;
             devtools: boolean;
@@ -23,7 +23,9 @@ declare module 'vue' {
         public constructor(
             config: {
                 el: Element,
-                render: (h: Function) => unknown
+                render: (h: Function) => unknown,
+                methods?: object,
+                data?: K | Function
             }
         );
     }

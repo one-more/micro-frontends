@@ -18,7 +18,7 @@ export class Component<State> extends HTMLElement {
     protected unsubscribe: Unsubscribe = null;
     protected state: State = null;
     protected actionCreators: ActionCreators = null;
-    protected actions: Actions = null;
+    protected actions: Actions = {};
 
     private createRoot() {
         if (this.isShadow) {
