@@ -1,6 +1,9 @@
-import {Component} from "./component";
+interface Component {
+    getName(): string;
+    new(): HTMLElement
+}
 
-export function define(component: typeof Component) {
+export function define(component: Component) {
     if ('customElements' in window) {
         customElements.define(
             component.getName(),

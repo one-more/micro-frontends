@@ -1,7 +1,7 @@
 import {ActionCreators, Actions, Selector, Store, Unsubscribe} from "./model";
 import {shallowEquals, subscribeWithSelector} from "./data-layer";
 
-export class Component<State> extends HTMLElement {
+export class Component<Derived = {}, State = {}> extends HTMLElement {
     public static getName(): string {
         throw new Error("Custom component should overload static getName method")
     }
@@ -13,10 +13,10 @@ export class Component<State> extends HTMLElement {
     protected isShadow: boolean = false;
     protected root: HTMLDivElement;
 
-    protected store: Store<unknown> = null;
-    protected selector: Selector<unknown, State> = null;
+    protected store: Store<State> = null;
+    protected selector: Selector<State, Derived> = null;
     protected unsubscribe: Unsubscribe = null;
-    protected state: State = null;
+    protected state: Derived = null;
     protected actionCreators: ActionCreators = null;
     protected actions: Actions = {};
     protected statesAreEqual = shallowEquals;
@@ -100,7 +100,7 @@ export class Component<State> extends HTMLElement {
         }
     }
 
-    protected update = (state?: State): void => {
+    protected update = (state?: Derived): void => {
         this.state = state;
         this.callRender()
     }
