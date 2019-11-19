@@ -5,6 +5,6 @@
         "module": "commonjs",
         "target": "es6",
         "jsx": "react",
-        "types": ["react"]
+        "types": ["react", "jest"]
     }
 }

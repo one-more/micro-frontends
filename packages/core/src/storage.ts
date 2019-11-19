@@ -1,6 +1,6 @@
 const storage = new Map();
 
-export function store(key: string | Symbol, value: any) {
+export function store(key: string | Symbol, value: unknown) {
     storage.set(key, value)
 }
 

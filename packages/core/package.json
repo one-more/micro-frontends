@@ -6,7 +6,8 @@
   "scripts": {
     "build": "webpack --config webpack.config.js && tsc --declaration --outDir dist/ --emitDeclarationOnly",
     "build:dev": "webpack --config webpack.config.dev.js && tsc --declaration --outDir dist/ --emitDeclarationOnly",
-    "prepublish": "npm run build"
+    "prepublish": "npm t && npm run build",
+    "test": "jest --coverage"
   },
   "keywords": [
     "micro-frontends"
@@ -23,5 +24,6 @@
     "react-dom": "^16.8.6",
     "svelte": "^3.5.3",
     "vue": "^2.6.10"
-  }
+  },
+  "devDependencies": {}
 }
