@@ -16,5 +16,10 @@
     "webpack": "^4.39.3",
     "webpack-cli": "^3.3.7",
     "webpack-merge": "^4.2.2"
+  },
+  "scripts": {
+    "install": "lerna exec npm ci",
+    "build": "lerna run build",
+    "test": "lerna run test"
   }
 }
