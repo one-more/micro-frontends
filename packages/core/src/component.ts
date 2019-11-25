@@ -21,7 +21,7 @@ export class Component<Derived = {}, State = {}> extends HTMLElement {
     protected actions: Actions = {};
     protected statesAreEqual = shallowEquals;
 
-    private createRoot() {
+    protected createRoot() {
         if (this.isShadow) {
             this.attachShadow({mode: 'open'})
         } else {
@@ -43,7 +43,7 @@ export class Component<Derived = {}, State = {}> extends HTMLElement {
 
     protected render(root: ShadowRoot | HTMLDivElement) {}
 
-    private callRender(): void {
+    protected callRender(): void {
         this.beforeRender();
         this.render(this.isShadow ? this.shadowRoot : this.root);
         this.afterRender();
@@ -81,14 +81,12 @@ export class Component<Derived = {}, State = {}> extends HTMLElement {
         this.disconnected();
     }
 
-    private bindActionCreators() {
+    protected bindActionCreators() {
         for (const key in this.actionCreators) {
-            if (this.actionCreators.hasOwnProperty(key)) {
-                const actionCreator = this.actionCreators[key];
-                this.actions[key] = (...args) => this.store.dispatch(
-                    actionCreator(...args)
-                )
-            }
+            const actionCreator = this.actionCreators[key];
+            this.actions[key] = (...args) => this.store.dispatch(
+                actionCreator(...args)
+            )
         }
     }
 

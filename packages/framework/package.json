@@ -22,5 +22,6 @@
     "react-dom": "^16.8.6",
     "vue": "^2.6.10"
   },
-  "gitHead": "1649eb321d10c42b3136961c9a34edf4b57c894a"
+  "gitHead": "1649eb321d10c42b3136961c9a34edf4b57c894a",
+  "dependencies": {}
 }
